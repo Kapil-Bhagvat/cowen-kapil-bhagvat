@@ -1,0 +1,9 @@
+<mat-card class="example-card" *ngIf="userInfo" routerLink="/detail/{{userInfo.id}}/albums">
+    <mat-card-title>{{userInfo.name}}</mat-card-title>
+    <mat-card-subtitle>{{userInfo.email}}</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{userInfo.address.city}}</p>
+      <p>Contact: {{userInfo.phone}}</p>
+      <p>Company: {{userInfo.company.name}}</p>
+    </mat-card-content>
+</mat-card>

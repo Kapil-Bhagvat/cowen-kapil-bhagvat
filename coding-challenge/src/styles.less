@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-grid-list{
+
+    .mat-grid-tile{
+        background-color: lightblue;
+        cursor: pointer;
+        &:hover{
+            background-color: skyblue;
+        }
+    }
+}
+.user-details-card{
+    .mat-grid-tile{
+        .mat-grid-tile-content{
+            .mat-card-title{
+                font-size: 12px;
+            }
+        }
+    }
+}
+/*
+*
+*/
+h1 {
+    margin-bottom: 0;
+  }
+  nav a {
+    padding: 1rem;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #e8e8e8;
+    color: #3d3d3d;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  nav a:hover {
+    color: white;
+    background-color: #42545C;
+  }
+  nav a.active {
+    color: white;
+    background-color: black;
+  }
+
+.mat-typography{
+    margin: 20px;
+}

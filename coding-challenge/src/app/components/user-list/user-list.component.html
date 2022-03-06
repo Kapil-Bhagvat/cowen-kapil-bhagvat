@@ -1,0 +1,9 @@
+<mat-grid-list cols="5" rowHeight="1:1">
+    
+    <mat-grid-tile *ngFor="let user of userList">
+
+        <app-user-tile [userInfo]="user"></app-user-tile>
+
+    </mat-grid-tile>
+
+</mat-grid-list>
