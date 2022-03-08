@@ -1,0 +1,8 @@
+<div class="container">
+    <br><br>
+    <ngb-pagination
+        [(page)]="page"
+        [pageSize]="pageSize"
+        [collectionSize]="actualList.length" (pageChange)="Paginate()">
+    </ngb-pagination>
+</div>

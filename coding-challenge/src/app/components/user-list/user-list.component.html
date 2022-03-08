@@ -1,9 +1,7 @@
-<mat-grid-list cols="5" rowHeight="1:1">
-    
-    <mat-grid-tile *ngFor="let user of userList">
-
+<div class="container d-flex">
+    <div class="btn card-group" *ngFor="let user of displayList">
         <app-user-tile [userInfo]="user"></app-user-tile>
+    </div>
+</div>
 
-    </mat-grid-tile>
-
-</mat-grid-list>
+<app-paginator [list]="userList" (_onPageChange)="onPageChange($event)"></app-paginator>

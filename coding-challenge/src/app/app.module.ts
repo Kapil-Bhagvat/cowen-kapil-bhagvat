@@ -4,12 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserTileComponent } from './components/user-tile/user-tile.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { PhotosListComponent } from './components/photos/list/list.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -17,15 +17,15 @@ import { PhotosListComponent } from './components/photos/list/list.component';
     UserListComponent,
     UserTileComponent,
     UserDetailsComponent,
-    PhotosListComponent
+    PhotosListComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatCardModule,
-    MatGridListModule
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

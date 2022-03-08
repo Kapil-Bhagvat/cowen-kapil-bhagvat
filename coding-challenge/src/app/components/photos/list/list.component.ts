@@ -9,7 +9,10 @@ import { UserServiceService } from '../../../services/user-service.service';
 })
 export class PhotosListComponent implements OnInit {
 
+  page = 1;
+  pageSize = 4;
   photosList : any[] = [];
+  displayList : any[] = [];
 
   constructor(private userService: UserServiceService, private route: ActivatedRoute) { }
 
@@ -24,5 +27,9 @@ export class PhotosListComponent implements OnInit {
         this.photosList = photoDetails;
       })
     }
+  }
+
+  onPageChange(event : any) {
+    this.displayList = event;
   }
 }

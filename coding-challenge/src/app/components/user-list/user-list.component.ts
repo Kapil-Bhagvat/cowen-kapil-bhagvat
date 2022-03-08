@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { UserServiceService } from '../../services/user-service.service';
+import { PaginatorComponent } from '../paginator/paginator.component';
 
 @Component({
   selector: 'app-user-list',
@@ -11,6 +12,9 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserServiceService) { }
 
   userList : any[] = [];
+  displayList: any[] = [];
+
+  @ViewChild(PaginatorComponent) paginator : PaginatorComponent = <PaginatorComponent>{};
 
   ngOnInit() {
     this.userService.getUsersList().subscribe((resp: any[]) => {
@@ -18,4 +22,8 @@ export class UserListComponent implements OnInit {
     });
   }
 
+  onPageChange(event : any) {
+    this.displayList = event;
+  }
+  
 }

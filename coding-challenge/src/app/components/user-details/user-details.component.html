@@ -1,19 +1,13 @@
 <div *ngIf="userDetails.length">
-    List of Photo albums for the selected user.
-
-    <mat-grid-list cols="5" rowHeight="2:1" class="user-details-card">
-    
-        <mat-grid-tile *ngFor="let details of userDetails">
-        
-            <mat-card routerLink="/detail/{{details.userId}}/albums/{{details.id}}" >
-        
-                <mat-card-title>{{details.title}}</mat-card-title>
-        
-            </mat-card>
-        
-        </mat-grid-tile>
-
-    </mat-grid-list>
-    
+    <br>
+    List of Photo albums for the selected user. Select any album to view photos.
+    <div class="container d-flex">
+        <div class="btn card text-center" *ngFor="let details of displayList" style="width: 18rem;" routerLink="/detail/{{details.userId}}/albums/{{details.id}}">
+            <div class="card-body">
+                <h5 class="card-title">{{details.title}}</h5>
+            </div>
+        </div>
+    </div>
+    <app-paginator [list]="userDetails" (_onPageChange)="onPageChange($event)"></app-paginator>
 </div>
 

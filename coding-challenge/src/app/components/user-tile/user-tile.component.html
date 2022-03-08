@@ -1,9 +1,10 @@
-<mat-card class="example-card" *ngIf="userInfo" routerLink="/detail/{{userInfo.id}}/albums">
-    <mat-card-title>{{userInfo.name}}</mat-card-title>
-    <mat-card-subtitle>{{userInfo.email}}</mat-card-subtitle>
-    <mat-card-content>
-      <p>{{userInfo.address.city}}</p>
-      <p>Contact: {{userInfo.phone}}</p>
-      <p>Company: {{userInfo.company.name}}</p>
-    </mat-card-content>
-</mat-card>
+
+<div class="card text-dark bg-light mb-3" style="max-width: 18rem;" *ngIf="userInfo" routerLink="/detail/{{userInfo.id}}/albums">
+  <div class="card-header">{{userInfo.name}}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{userInfo.email}}</h5>
+    <p class="card-text">Address: {{userInfo.address.city}}</p>
+    <p class="card-text">Contact: {{userInfo.phone}}</p>
+    <p class="card-text">Company: {{userInfo.company.name}}</p>
+  </div>
+</div>

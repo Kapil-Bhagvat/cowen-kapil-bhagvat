@@ -1,6 +1,21 @@
 <h1>{{title}}</h1>
 <nav>
-  <a routerLink="/" routerLinkActive="active">Dashboard</a> |
-  <a routerLink="/list" routerLinkActive="active">List</a>
+  <a routerLink="/" routerLinkActive="active">Dashboard</a>
 </nav>
+
+<div>
+  <br>
+  <div class="btn btn-primary" routerLink="/list">
+    get List
+  </div>
+  <br>
+  <br>
+  <div class="btn btn-secondary">
+    < < Back
+  </div>
+
+</div>
+
+
+
 <router-outlet></router-outlet>

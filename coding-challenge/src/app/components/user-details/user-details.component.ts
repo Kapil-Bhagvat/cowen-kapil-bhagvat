@@ -12,6 +12,7 @@ export class UserDetailsComponent implements OnInit {
   constructor(private userService: UserServiceService, private route: ActivatedRoute) { }
 
   userDetails : any[] = []; 
+  displayList : any[] = [];
 
   ngOnInit(): void {
     this.getDetails();
@@ -24,5 +25,9 @@ export class UserDetailsComponent implements OnInit {
         this.userDetails = response;
       });
     } 
+  }
+
+  onPageChange(event : any) {
+    this.displayList = event;
   }
 }
