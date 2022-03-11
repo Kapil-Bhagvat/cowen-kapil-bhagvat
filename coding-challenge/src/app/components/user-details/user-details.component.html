@@ -1,13 +1,47 @@
-<div *ngIf="userDetails.length">
-    <br>
-    List of Photo albums for the selected user. Select any album to view photos.
-    <div class="container d-flex">
-        <div class="btn card text-center" *ngFor="let details of displayList" style="width: 18rem;" routerLink="/detail/{{details.userId}}/albums/{{details.id}}">
-            <div class="card-body">
-                <h5 class="card-title">{{details.title}}</h5>
+<div *ngIf="userDetails.length && !showCreateAlbumSection">
+    <div class="container">
+        <div>
+            List of Photo albums for the selected user. Select any album to view photos.
+        </div>
+        <br>
+        <div>
+            <b>Count: {{userDetails.length}}</b>
+        </div><br>
+        <div class="d-flex">
+            <div class="btn card text-center" *ngFor="let details of displayList" style="width: 18rem;" routerLink="/detail/{{details.userId}}/albums/{{details.id}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{details.title}}</h5>
+                </div>
             </div>
         </div>
+        
     </div>
     <app-paginator [list]="userDetails" (_onPageChange)="onPageChange($event)"></app-paginator>
 </div>
 
+<div *ngIf="!showCreateAlbumSection" class="btn btn-secondary" (click)="goBack()">
+    go back
+</div>
+
+
+<div class="container">
+    <div class="float-right" *ngIf="!showCreateAlbumSection">
+        <a class="d-inline-block nav-link" (click)="toggleCreateAlbum()">
+            create new album
+        </a>
+    </div>
+    <form *ngIf="showCreateAlbumSection">
+        <div  class="form-group">
+          <label>Enter name for your new album :</label>
+          <input type="text" class="form-control" placeholder="New album name" [formControl]="albumName">
+        </div>
+        <br>
+        <div class="form-group">
+            <small>Minimum length should be {{nameLength}} characters.</small><br>
+            <small>Please note that album will be created with few random images.</small>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" (click)="createAlbum()" [disabled]="albumName.invalid">Create</button>&nbsp;&nbsp;&nbsp;
+        <button type="submit" class="btn btn-secondary" (click)="close()" >Cancel</button>
+    </form>
+</div>

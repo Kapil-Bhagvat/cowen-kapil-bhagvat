@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Userlist } from 'src/app/interfaces/Userlist';
 
 @Component({
   selector: 'app-user-tile',
@@ -9,7 +10,7 @@ export class UserTileComponent implements OnInit {
 
   constructor() { }
 
-  @Input("userInfo") userInfo : any;
+  @Input("userInfo") userInfo : Userlist | undefined;
 
   ngOnInit() {
     

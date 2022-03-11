@@ -17,7 +17,7 @@ export class PaginatorComponent implements AfterContentChecked {
 
   constructor() { }
 
-  ngAfterContentChecked(): void {
+  ngAfterContentChecked() {
     this.Paginate();
   }
 

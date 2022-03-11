@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +9,7 @@ export class AppComponent implements OnInit {
 
   title = 'List of Members';
 
-  prevLocation: string = "";
-
-  constructor(private route: ActivatedRoute) {}
+  constructor() {}
 
   ngOnInit() {
       

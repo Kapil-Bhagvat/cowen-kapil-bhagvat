@@ -10,6 +10,7 @@ import { UserTileComponent } from './components/user-tile/user-tile.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { PhotosListComponent } from './components/photos/list/list.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

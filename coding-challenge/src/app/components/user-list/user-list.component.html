@@ -1,7 +1,16 @@
-<div class="container d-flex">
-    <div class="btn card-group" *ngFor="let user of displayList">
-        <app-user-tile [userInfo]="user"></app-user-tile>
+<div class="container">
+    <div>
+        <b>Count: {{userList.length}}</b>
     </div>
+    <br>
+    <div class="d-flex">
+        <div class="btn card-group" *ngFor="let user of displayList">
+            <app-user-tile [userInfo]="user"></app-user-tile>
+        </div>
+    </div>
+    
 </div>
-
+<div class="btn btn-secondary" (click)="goBack()">
+    go back
+</div>
 <app-paginator [list]="userList" (_onPageChange)="onPageChange($event)"></app-paginator>
