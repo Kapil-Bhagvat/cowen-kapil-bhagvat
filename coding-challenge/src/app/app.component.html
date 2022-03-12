@@ -1,18 +1,17 @@
-<h1>{{title}}</h1>
-<nav>
-  <a routerLink="/" routerLinkActive="active">Dashboard</a>
-</nav>
+<div class="container">
 
-<div>
-  <br>
-  <div class="btn btn-primary" routerLink="/list">
-    get List
+  <h1>{{title}}</h1>
+  <nav>
+    <a routerLink="/dashboard">Dashboard</a>
+  </nav>
+
+  <div>
+    <br>
+    <div class="btn btn-primary" routerLink="/list">
+      get List
+    </div>
   </div>
+  <hr>
   <br>
-  <br>
-
+  <router-outlet></router-outlet>
 </div>
-
-
-
-<router-outlet></router-outlet>

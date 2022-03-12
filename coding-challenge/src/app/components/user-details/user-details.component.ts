@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserServiceService } from '../../services/user-service.service';
-import { Location } from '@angular/common';
 import { Album } from 'src/app/interfaces/Album';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { HttpError } from '../../interfaces/HttpError';
 
 @Component({
   selector: 'app-user-details',
@@ -12,67 +12,84 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class UserDetailsComponent implements OnInit {
 
-  constructor(private userService: UserServiceService, private route: ActivatedRoute, private _location: Location) { }
-
+  constructor(private userService: UserServiceService, private route: ActivatedRoute, private router: Router) { }
+  /**
+   * total list of albums
+   */
   userDetails : Album[] = []; 
+  /**
+   * display list of albums
+   */
   displayList : Album[] = [];
-  showCreateAlbumSection: boolean = false;
+  /**
+   * userId to be used to make service call
+   */
   userId : string | number | any = "";
-  nameLength: number = 5;
-  albumName = new FormControl('');
+  /**
+   * Selected User name
+   */
+  selectedUser: string = "";
+  /**
+   * HttpError
+   */
+  error: HttpError = <HttpError>{};
 
   ngOnInit(): void {
     this.getDetails();
+    /**
+     * 
+     */
+    if(history.state.name) {
+      this.selectedUser = history.state.name;
+    }
   }
 
   getDetails() {
+    /**
+     * reading User id from Route
+     */
     this.userId = this.route.snapshot.paramMap.get('id')?.toString();
     if(this.userId) {
+      /**
+       * service call to get Album of selected User
+       */
       this.userService.getSelectedUserAlbum(this.userId).subscribe((response: Album[]) => {
         this.userDetails = response;
+        /**
+         * check if New ALbum details are sent via router state
+         */
+        if(history.state.userId) {
+          let data : Album = {
+            id: history.state.id,
+            userId: history.state.userId,
+            title: history.state.title
+          }
+          /**
+           * adding new album to first position
+           */
+          this.userDetails.unshift(data);
+        }
+      }, (e: HttpErrorResponse) => {
+        this.error = {
+          status: e.status,
+          name: e.name,
+          message: e.message
+        }
+
       });
     } 
   }
-
+  /**
+   * event to change displayList
+   */
   onPageChange(event : Album[]) {
     this.displayList = event;
   }
-
+  /**
+   * navigate back to List page
+   */
   goBack() {
-    this._location.back();
+    this.router.navigate(["/list"], {relativeTo: this.route});
   }
 
-  toggleCreateAlbum() {
-    this.showCreateAlbumSection = true;
-    this.albumName.setValidators([Validators.required, Validators.pattern(/^[a-zA-Z0-9\s-]*/gi), Validators.minLength(this.nameLength)]);
-    this.albumName.updateValueAndValidity();
-  }
-
-  close() {
-    this.showCreateAlbumSection = false;
-    this.albumName.setValue("");
-  }
-
-  createAlbum() {
-
-    if (this.albumName.valid) {
-
-      let newAlbum: Album = {
-        userId: this.userId,
-        id: Math.floor(Math.random() * 10000 + 1),
-        title: this.albumName.value
-      }
-      // https://picsum.photos/
-      this.userService.createNewAlbum(newAlbum).subscribe((newAlbum: Album) => {
-        this.userDetails.unshift(newAlbum);
-        this.close();
-        debugger;
-      }, () => {
-        debugger;
-      })
-    }
-  }
-  addPhotos() {
-    
-  }
 }

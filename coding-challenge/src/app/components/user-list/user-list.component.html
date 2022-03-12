@@ -1,16 +1,17 @@
-<div class="container">
+<div *ngIf="!error.status">
     <div>
-        <b>Count: {{userList.length}}</b>
+        <b>Total members: {{userList.length}}</b>
     </div>
     <br>
     <div class="d-flex">
         <div class="btn card-group" *ngFor="let user of displayList">
-            <app-user-tile [userInfo]="user"></app-user-tile>
+            <app-user-tile [user]="user"></app-user-tile>
         </div>
     </div>
-    
+    <br>
+    <div class="btn btn-secondary" (click)="goBack()">
+        go back
+    </div>
 </div>
-<div class="btn btn-secondary" (click)="goBack()">
-    go back
-</div>
-<app-paginator [list]="userList" (_onPageChange)="onPageChange($event)"></app-paginator>
+<app-paginator *ngIf="!error.status" [list]="userList" (_onPageChange)="onPageChange($event)"></app-paginator>
+<app-http-error *ngIf="error.status" [error]="error"></app-http-error>

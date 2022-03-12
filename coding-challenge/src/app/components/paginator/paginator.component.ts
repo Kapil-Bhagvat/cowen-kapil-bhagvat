@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterContentChecked, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-paginator',

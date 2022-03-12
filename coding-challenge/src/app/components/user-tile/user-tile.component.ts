@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Userlist } from 'src/app/interfaces/Userlist';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Userlist } from '../../interfaces/Userlist';
 
 @Component({
   selector: 'app-user-tile',
@@ -8,11 +9,20 @@ import { Userlist } from 'src/app/interfaces/Userlist';
 })
 export class UserTileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
-  @Input("userInfo") userInfo : Userlist | undefined;
+  @Input("user") user : Userlist | undefined;
 
   ngOnInit() {
     
+  }
+
+  getDetails(user : Userlist) {
+    if (user) {
+      /**
+       * sending selected user details to UserDetailsComponent
+       */
+      this.router.navigate(["/detail/" + user.id + "/albums"], { relativeTo: this.route, state: user });
+    }
   }
 }

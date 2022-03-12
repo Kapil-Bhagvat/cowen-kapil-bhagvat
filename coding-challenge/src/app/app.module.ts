@@ -11,6 +11,9 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { PhotosListComponent } from './components/photos/list/list.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewAlbumComponent } from './components/user-details/new-album/new-album.component';
+import { HttpErrorComponent } from './components/http-error/http-error.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserTileComponent,
     UserDetailsComponent,
     PhotosListComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    NewAlbumComponent,
+    HttpErrorComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

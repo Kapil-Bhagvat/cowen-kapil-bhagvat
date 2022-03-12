@@ -1,10 +1,9 @@
-
-<div class="card text-dark bg-light mb-3" style="max-width: 18rem;" *ngIf="userInfo" routerLink="/detail/{{userInfo.id}}/albums">
-  <div class="card-header">{{userInfo.name}}</div>
+<div class="card text-dark bg-light mb-3" style="max-width: 18rem;" *ngIf="user" (click)="getDetails(user)">
+  <div class="card-header">{{user.name}}</div>
   <div class="card-body">
-    <h5 class="card-title">{{userInfo.email}}</h5>
-    <p class="card-text">Address: {{userInfo.address.city}}</p>
-    <p class="card-text">Contact: {{userInfo.phone}}</p>
-    <p class="card-text">Company: {{userInfo.company.name}}</p>
+    <h5 class="card-title">{{user.email}}</h5>
+    <p class="card-text">Address: {{user.address.city}}</p>
+    <p class="card-text">Contact: {{user.phone}}</p>
+    <p class="card-text">Company: {{user.company.name}}</p>
   </div>
 </div>
