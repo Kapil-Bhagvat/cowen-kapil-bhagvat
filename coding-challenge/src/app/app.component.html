@@ -1,13 +1,13 @@
 <div class="container">
 
   <h1>{{title}}</h1>
-  <nav>
-    <a routerLink="/dashboard">Dashboard</a>
-  </nav>
-
-  <div>
+  <div class="d-flex">
     <br>
-    <div class="btn btn-primary" routerLink="/list">
+    <div class="btn btn-outline-primary" routerLink="/dashboard" routerLinkActive="active">
+      Dashboard
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="btn btn-outline-primary" routerLink="/list" routerLinkActive="active">
       get List
     </div>
   </div>
