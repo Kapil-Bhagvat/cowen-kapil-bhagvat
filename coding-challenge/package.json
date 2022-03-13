@@ -7,6 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
+    "test:watch": "jest --watch",
+    "clear_jest": "jest --clearCache",
     "cypress:open": "cypress open"
   },
   "private": true,
@@ -18,7 +20,6 @@
     "@angular/core": "~12.2.0",
     "@angular/forms": "~12.2.0",
     "@angular/localize": "~12.2.0",
-    "@angular/material": "^12.2.13",
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",

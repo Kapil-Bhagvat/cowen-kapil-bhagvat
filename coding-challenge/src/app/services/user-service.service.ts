@@ -74,12 +74,12 @@ export class UserServiceService {
   }
 }
 
-enum Resource {
+export enum Resource {
   _users = "users",
   _albums = "albums",
   _photos = "photos",
 }
-enum Params {
+export enum Params {
   __userId = "userId",
   __albumId = "albumId"
 }
